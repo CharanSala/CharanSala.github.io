@@ -8,6 +8,7 @@ export default function Projects() {
       duration: "June – Aug 2025",
       tech: ["React", "Node.js", "Express", "MongoDB", "Leaflet.js"],
       github: "https://github.com/Sathwik-45/Aqua",
+      live: "", // ← you can add later
       points: [
         "Built a web platform to order water from nearby plants within 10km, serving 50+ test users.",
         "Integrated Leaflet.js and OpenStreetMap for dynamic geolocation filtering.",
@@ -19,6 +20,7 @@ export default function Projects() {
       duration: "May – Jun 2025",
       tech: ["TypeScript", "Next.js", "Prisma", "Tailwind"],
       github: "https://github.com/CharanSala/HamaraLabs-self-hosted",
+      live: "", // ← you can add later
       points: [
         "Developed a digital lab management platform used in 10+ tinkering labs.",
         "Enabled activity tracking, role-based access, and form submissions.",
@@ -30,6 +32,7 @@ export default function Projects() {
       duration: "Feb – Mar 2025",
       tech: ["React", "Node.js", "Express", "MongoDB", "Compilex"],
       github: "https://github.com/CharanSala/Codemoji",
+      live: "https://codemoji-challenge.vercel.app/", // ← YOUR URL ADDED HERE
       points: [
         "Built a full-stack gamified coding platform used by 50+ students.",
         "Integrated real-time code execution using Compilex.",
@@ -42,12 +45,10 @@ export default function Projects() {
     <main className="min-h-screen bg-[#f8f9ff] relative overflow-hidden">
       <Navbar />
 
-      {/* Background Soft Glows - Consistent with Home/Resume */}
       <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-100/40 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-100/30 rounded-full blur-[120px] pointer-events-none"></div>
 
       <section className="px-6 md:px-10 py-32 max-w-6xl mx-auto relative z-10">
-        {/* Header */}
         <div className="mb-8 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] tracking-tight">
             Projects
@@ -59,35 +60,47 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
               className="group bg-white border border-gray-100 rounded-2xl p-8 shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-blue-100 transition-all transform hover:-translate-y-1"
             >
-              {/* Card Header */}
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-xl font-bold text-[#0f172a] transition-colors">
+                  <h3 className="text-xl font-bold text-[#0f172a]">
                     {project.title}
                   </h3>
                   <p className="text-sm font-medium text-[#3b3df2] mt-1">
                     {project.duration}
                   </p>
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-2 bg-gray-50 rounded-lg text-gray-600 hover:text-[#3b3df2] hover:bg-blue-50 transition-all"
-                  title="View Source Code"
-                >
-                  <FaGithub size={20} />
-                </a>
+
+                <div className="flex gap-2">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 bg-gray-50 rounded-lg text-gray-600 hover:text-[#3b3df2] hover:bg-blue-50 transition-all"
+                    title="View Source Code"
+                  >
+                    <FaGithub size={20} />
+                  </a>
+
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-2 bg-gray-50 rounded-lg text-gray-600 hover:text-[#3b3df2] hover:bg-blue-50 transition-all"
+                      title="Live Project"
+                    >
+                      <FaExternalLinkAlt size={18} />
+                    </a>
+                  )}
+                </div>
               </div>
 
-              {/* Tech Stack Tags */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((t, i) => (
                   <span
@@ -99,7 +112,6 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Highlights */}
               <ul className="space-y-3">
                 {project.points.map((point, i) => (
                   <li
@@ -112,7 +124,6 @@ export default function Projects() {
                 ))}
               </ul>
 
-              {/* Action Link */}
               <div className="mt-8 pt-6 border-t border-gray-50">
                 <a
                   href={project.github}
